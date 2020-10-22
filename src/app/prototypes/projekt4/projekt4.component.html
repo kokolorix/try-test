@@ -42,8 +42,8 @@
           <mat-drawer-content [ngStyle]="contentDrawerContentStyles">
             <div class="content rand-innen">
               <mat-accordion [multi]="true">
-                <projekt-daten [aktuellesProjekt]="aktuellesProjekt"></projekt-daten>
-                <projekt-anlage-daten [aktuellesProjekt]="aktuellesProjekt"></projekt-anlage-daten>
+                <projekt-daten #projekt_daten [aktuellesProjekt]="aktuellesProjekt"></projekt-daten>
+                <projekt-anlage-daten [aktuellesProjekt]="aktuellesProjekt" (click)="projekt_daten.editProjekt = false"></projekt-anlage-daten>
               </mat-accordion>
             </div>
           </mat-drawer-content>
