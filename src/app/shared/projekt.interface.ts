@@ -26,9 +26,18 @@ export interface Datum
   monat:number;
   jahr:number;
 }
+export interface Dokument{
+  pfad:string;
+  name: string;
+}
+export interface Leistung{
+  name?:string;
+  typ?: string;
+  dokumente?: Dokument[];
+}
 export interface Anlage{
-  gebaeudeteil:string;
-  gebaeudenutzung:string;
+  gebaeudeteil?:string;
+  gebaeudenutzung?:string;
   zaehlerNr?:string;
   zaehlerNr2?:string;
   vnbMeldungsNr?:string;
@@ -36,6 +45,7 @@ export interface Anlage{
   stromkunde?:Adresse;
   installateur?:Adresse;
   sachbearbeiter?:Adresse;
+  leistungen?: Leistung[];
 }
 export interface Projekt{
   id:number;

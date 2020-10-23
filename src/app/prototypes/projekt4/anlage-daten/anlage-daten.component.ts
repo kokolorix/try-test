@@ -19,6 +19,9 @@ export class AnlageDatenComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  hasLeistung(a:Anlage, typ:string):boolean{
+    return a.leistungen.filter(x => x.typ.toLocaleLowerCase() === typ.toLocaleLowerCase()).length !== 0;
+  }
   openAnlageDetail(a:Anlage):void{
 
   }
@@ -28,6 +31,7 @@ export class AnlageDatenComponent implements OnInit {
 
   saveChanges() {
   }
+
   cancelChanges(){
   }
 

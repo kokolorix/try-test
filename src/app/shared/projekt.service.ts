@@ -1,7 +1,8 @@
 ﻿import { Injectable } from '@angular/core';
-import { Status, Projekt, Standort, Adresse, Anlage, Datum } from 'src/app/shared/projekt.interface'
+import {  Dokument, Leistung, Status, Projekt, Standort, Adresse, Anlage, Datum } from 'src/app/shared/projekt.interface'
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
+// import { Leistung } from '../prototypes/projekt2/projekt2.component';
 
 @Injectable({
   providedIn: 'root'
@@ -177,8 +178,27 @@ function erstelleAnlagen(): Anlage[] {
       zaehlerNr: zaehlerNr.toString(),
       zaehlerNr2: zaehlerNr2 ? zaehlerNr2.toString() : '',
       vnbMeldungsNr: vnbMeldungsNr ? vnbMeldungsNr.toString() : '',
+      leistungen: erstelleLeistungen(),
     });
   }
 
   return anlagen;
+}
+
+function erstelleLeistungen(): Leistung[]{
+  let leistungen  : Leistung[] = [];
+
+  for (let i = 0; i < LEIST_DEFS.length; ++i) {
+    let x = Math.round(Math.random() * 9);
+    let def: string = LEIST_DEFS[i];
+
+    if (x && (x % 2)) {
+      leistungen.push({
+          typ: def,
+          name: def,
+        });
+    }
+  }
+
+  return leistungen;
 }
