@@ -1,4 +1,4 @@
-<mat-expansion-panel #anlage_daten [expanded]="true" class="mat-elevation-z8" style="margin-top: 2rem;">
+<mat-expansion-panel #anlage_daten [expanded]="true" class="mat-elevation-z8" style="margin-top: 1rem;">
   <mat-expansion-panel-header>Anlagen</mat-expansion-panel-header>
   <mat-selection-list *ngIf="false" [multiple]=" false"
     style="padding-top: 0; padding-bottom: 0; min-width:12rem ; max-width: 16rem;">
@@ -21,6 +21,8 @@
           <mat-icon>menu</mat-icon>
         </button>
         <span>{{a.gebaeudeteil}}, {{a.gebaeudenutzung}}</span>
+        <span style="margin-left: 0.5rem;margin-right: 0.5rem;" class="menu-spacer"></span>
+        <span>ZählerNr. {{a.zaehlerNr}}, RapportNr. {{a.vnbMeldungsNr}}</span>
         </div>
       </mat-expansion-panel-header>
       <div>

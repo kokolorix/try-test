@@ -36,7 +36,7 @@
                     <mat-drawer-content [ngStyle]="contentDrawerContentStyles">
                         <div class="content rand-innen">
                             <mat-accordion [multi]="true">
-                                <projekt-daten #projekt_daten [aktuellesProjekt]="aktuellesProjekt"></projekt-daten>
+                <projekt-daten #projekt_daten [aktuellesProjekt]="aktuellesProjekt" (click)="anlage_daten.editAnlage = false"></projekt-daten>
                                 <button mat-fab [ngStyle]="{'left.px': [projekt_daten].width}"> <mat-icon>add</mat-icon></button>
                                 <projekt-anlage-daten [aktuellesProjekt]="aktuellesProjekt" (click)="projekt_daten.editProjekt = false">
                                 </projekt-anlage-daten>
