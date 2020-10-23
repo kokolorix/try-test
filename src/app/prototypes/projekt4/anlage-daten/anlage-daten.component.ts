@@ -9,8 +9,10 @@ import { Anlage, Projekt } from 'src/app/shared/projekt.interface';
 export class AnlageDatenComponent implements OnInit {
   @Input() aktuellesProjekt:Projekt;
 
-  public editAnlage: boolean = false;
+  public onEditingAnlage: boolean = false;
   public aktuelleAnlage: Anlage;
+
+  public displayedColumns: string[] = ['edit', 'anlage', 'zaehler', 'vnbnr', 'tag', 'ia', 'ab', 'sina'];
 
   constructor() { }
 
@@ -21,8 +23,12 @@ export class AnlageDatenComponent implements OnInit {
 
   }
 
-  alert(msg : any){
-    window.alert(msg);
+  startChanging(e: any): void {
+  }
+
+  saveChanges() {
+  }
+  cancelChanges(){
   }
 
 }

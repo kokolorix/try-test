@@ -1,29 +1,30 @@
 <mat-expansion-panel #projekt_daten [expanded]="true" class="mat-elevation-z8">
- <mat-expansion-panel-header>
-   <!--
-     style="display: flex; align-items: center;"
-     style="justify-self: center;"
-    -->
-   <div >
-         <span>Projekt-Daten</span>
-        <!-- <button mat-fab color="primary"
-        style="position: absolute; left:44%; top: 0.5rem; z-index: 100;"
-        >
-         <mat-icon>add</mat-icon>
-       </button>       <span class="menu-spacer"></span> -->
-        <span *ngIf="!projekt_daten.expanded" style="margin-left: 0.5rem;">{{aktuellesProjekt.standort.strasse}}
-      {{aktuellesProjekt.standort.plz}} {{aktuellesProjekt.standort.postOrt}}</span>
-    </div></mat-expansion-panel-header>
-    <div *ngIf="!editProjekt">
+    <mat-expansion-panel-header>
+        <div>
+            <span>Projekt-Daten</span>
+
+            <span *ngIf="!projekt_daten.expanded" style="margin-left: 0.5rem;">{{aktuellesProjekt.standort.strasse}}
+                {{aktuellesProjekt.standort.plz}} {{aktuellesProjekt.standort.postOrt}}</span>
+
+            <div style="position: absolute; right: 8%; top: 15%;">
+                <button mat-icon-button *ngIf="!onEditingProjekt"
+                    (click)="startChanging(this); $event.stopPropagation()">
+                    <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-icon-button><mat-icon>add_circle</mat-icon></button>
+            </div>
+        </div>
+    </mat-expansion-panel-header>
+    <div *ngIf="!onEditingProjekt">
         <p>
             <mat-form-field appearance="outline" style="width: 18rem; height: fit-content;">
                 <mat-label>Standort</mat-label>
                 <textarea disabled="true" matInput value="{{aktuellesProjekt.standort.strasse}}
 {{aktuellesProjekt.standort.plz}} {{aktuellesProjekt.standort.postOrt}}"></textarea>
             </mat-form-field>
-            <button mat-icon-button class="editButton" (click)="editStandort(this)">
-        <mat-icon>edit</mat-icon>
-      </button>
+            <button mat-icon-button class="editButton" (click)="startChanging(this)">
+                <mat-icon>edit</mat-icon>
+            </button>
         </p>
         <p>
             <mat-form-field appearance="outline" style="width: 18rem; ">
@@ -34,84 +35,85 @@
                 <mat-label>Parzelle</mat-label>
                 <input disabled="true" matInput type="text" value="{{aktuellesProjekt.parzellenNr}}" />
             </mat-form-field>
-            <button mat-icon-button class="editButton" (click)="editStandort(this)">
-        <mat-icon>edit</mat-icon>
-      </button>
+            <button mat-icon-button class="editButton" (click)="startChanging(this)">
+                <mat-icon>edit</mat-icon>
+            </button>
         </p>
         <p>
             <mat-form-field appearance="outline" style="width: 18rem; ">
                 <mat-label>Versicherungs-Nr.</mat-label>
                 <input disabled="true" matInput type="text" value="{{aktuellesProjekt.versicherungsNr}}" />
             </mat-form-field>
-            <button mat-icon-button class="editButton" (click)="editStandort(this)">
-        <mat-icon>edit</mat-icon>
-      </button>
+            <button mat-icon-button class="editButton" (click)="startChanging(this)">
+                <mat-icon>edit</mat-icon>
+            </button>
         </p>
         <p>
             <mat-form-field appearance="outline" style="width: 18rem; ">
                 <mat-label>Gebäudeart</mat-label>
                 <input disabled="true" matInput type="text" value="{{aktuellesProjekt.gebaeudeArt}}" />
             </mat-form-field>
-            <button mat-icon-button class="editButton" (click)="editStandort(this)">
-        <mat-icon>edit</mat-icon>
-      </button>
+            <button mat-icon-button class="editButton" (click)="startChanging(this)">
+                <mat-icon>edit</mat-icon>
+            </button>
         </p>
     </div>
-    <div *ngIf="editProjekt">
+    <div *ngIf="onEditingProjekt">
         <p>
             <mat-form-field appearance="outline" style="width: 18rem; ">
                 <mat-label>Strasse</mat-label>
-                <input matInput type="text" value="{{aktuellesProjekt.standort.strasse}}" />
+                <input matInput type="text" [(ngModel)]="tempProjekt.standort.strasse" />
             </mat-form-field>
             <mat-form-field appearance="outline" style="width: 6rem; margin-left: 0.5rem; ">
                 <mat-label>Nr</mat-label>
-                <input matInput type="text" value="{{aktuellesProjekt.standort.strasseNr}}" />
+                <input matInput type="text" [(ngModel)]="tempProjekt.standort.strasseNr" />
             </mat-form-field>
             <mat-form-field appearance="outline" style="width: 6rem; margin-left: 0.5rem; ">
                 <mat-label>Nr-Zusatz</mat-label>
-                <input matInput type="text" value="{{aktuellesProjekt.standort.strasseNrZusatz}}" />
+                <input matInput type="text" [(ngModel)]="tempProjekt.standort.strasseNrZusatz" />
             </mat-form-field>
         </p>
         <p>
             <mat-form-field appearance="outline" style="width: 6rem; margin-right: 0.5rem; ">
                 <mat-label>PLZ</mat-label>
-                <input matInput type="text" value="{{aktuellesProjekt.standort.plz}}" />
+                <input matInput type="text" [(ngModel)]="tempProjekt.standort.plz" />
             </mat-form-field>
             <mat-form-field appearance="outline" style="width: 18rem; ">
                 <mat-label>Ort</mat-label>
-                <input matInput type="text" value="{{aktuellesProjekt.standort.postOrt}}" />
+                <input matInput type="text" [(ngModel)]="tempProjekt.standort.postOrt" />
             </mat-form-field>
         </p>
         <p>
             <mat-form-field appearance="outline" style="width: 18rem; ">
                 <mat-label>Gemeinde</mat-label>
-                <input matInput type="text" value="{{aktuellesProjekt.standort.gemeinde}}" />
+                <input matInput type="text" [(ngModel)]="tempProjekt.standort.gemeinde" />
             </mat-form-field>
             <mat-form-field appearance="outline" style="width: 6rem; margin-left: 0.5rem; ">
                 <mat-label>Parzelle</mat-label>
-                <input matInput type="text" value="{{aktuellesProjekt.parzellenNr}}" />
+                <input matInput type="text" [(ngModel)]="tempProjekt.parzellenNr" />
             </mat-form-field>
         </p>
         <p>
             <mat-form-field appearance="outline" style="width: 18rem; ">
                 <mat-label>Versicherungs-Nr.</mat-label>
-                <input matInput type="text" value="{{aktuellesProjekt.versicherungsNr}}" />
+                <input matInput type="text" [(ngModel)]="tempProjekt.versicherungsNr" />
             </mat-form-field>
         </p>
         <p>
             <mat-form-field appearance="outline" style="width: 18rem; ">
                 <mat-label>Gebäudeart</mat-label>
-                <input matInput type="text" value="{{aktuellesProjekt.gebaeudeArt}}" />
+                <input matInput type="text" [(ngModel)]="tempProjekt.gebaeudeArt" />
+                <!-- <input matInput type="text" value="{{aktuellesProjekt.gebaeudeArt}}" /> -->
             </mat-form-field>
         </p>
         <mat-toolbar>
             <span class="menu-spacer"></span>
-            <button mat-icon-button (click)="editProjekt=false">
-        <mat-icon>save</mat-icon>
-      </button>
-            <button mat-icon-button (click)="editProjekt=false">
-        <mat-icon>cancel</mat-icon>
-      </button>
+            <button mat-icon-button (click)="saveChanges()">
+                <mat-icon>cancel</mat-icon>
+            </button>
+            <button mat-icon-button (click)="cancelChanges()">
+                <mat-icon>check_circle</mat-icon>
+            </button>
         </mat-toolbar>
     </div>
 </mat-expansion-panel>

@@ -1,0 +1,21 @@
+.formHeader{
+    width: 3rem;
+    margin-left: 1rem;
+}
+.addButton {
+	opacity: 10%;
+}
+.addButton:hover {
+	opacity: 50%;
+}
+.hasButton{
+	color: green;
+}
+.hasButton:hover{
+	color: darkslateblue;
+}
+
+.infoColumn {
+    max-width: 9rem;
+    min-width: 7rem;
+}

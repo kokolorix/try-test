@@ -1,39 +1,15 @@
 ﻿<div #das_ganze class="alles">
   <div #projekt_div class="theme rand-innen">
     <mat-card class="mat-elevation-z8">
-      <div #floating_buttons style="position: absolute; top: 0.5rem; z-index: 10;"
-        [ngStyle]="{'left.px': [(projekt_div.clientWidth / 2) - (floating_buttons.clientWidth / 2)] }">
-        <button mat-fab color="primary" (click)="sidenav.toggle()" style="margin-right: 0.5rem;">
+      <mat-toolbar>
+        <button mat-mini-fab color="secundary" routerLink="/projektliste4//{{filter}}" style="margin-right: 0.5rem;">
+          <mat-icon>arrow_back</mat-icon>
+        </button>
+        <button mat-mini-fab color="secundary" (click)="sidenav.toggle()" style="margin-right: 0.5rem;">
           <mat-icon>menu</mat-icon>
         </button>
-        <!--
-          (click)="alert(floating_buttons.offsetHeight)"
-        -->
-        <button mat-fab color="primary" routerLink="/projektliste4//{{filter}}" style="margin-right: 0.5rem;">
-          <mat-icon>arrow_upward</mat-icon>
-        </button>
-        <!-- <button mat-fab color="primary" style="margin-right: 0.5rem;"
-        (click)="newProjekt()"
-        >
-          <mat-icon>add</mat-icon>
-        </button> -->
-      </div>
-      <mat-card-header>
-        <mat-card-title [ngStyle]="{'height.px': floating_buttons.clientHeight}">Projekt-Details</mat-card-title>
-      </mat-card-header>
+      </mat-toolbar>
       <mat-card-content>
-        <!-- <mat-toolbar-row>[ngStyle]="{'height: '}"
-
-            <button mat-icon-button (click)="sidenav.toggle()">
-              <mat-icon>menu</mat-icon>
-            </button>
-            <span>Projekte</span>
-            <button mat-icon-button routerLink="/projektliste4//{{filter}}">
-              <mat-icon>arrow_circle_up</mat-icon>
-            </button>
-            <span>Projekt-Liste</span>
-            <span class="menu-spacer"></span>
-          </mat-toolbar-row> -->
         <mat-drawer-container style="height: 100%;">
           <mat-drawer mwlResizable #sidenav role="directory" mode="side" position="start"
             [opened]="navOpen && das_ganze.offsetWidth > 1000" fixedTopGap="0" fixedBottomGap="0"
@@ -44,34 +20,23 @@
               style="padding-top: 0; padding-bottom: 0; min-width: 264px; overflow-y: unset;"
               style="padding-top: 0; padding-bottom: 0; min-width: 264px; overflow-y: unset;">
               <mat-list-option *ngFor="let p of gefilterteProjekte" style="overflow-y: unset;"
-                (click)="aktuellesProjekt = p; editProjekt=false" [ngClass]="{'itmSelect' : aktuellesProjekt===p}">
+                (click)="selectProjekt(p, projekt_daten); sidenav.toggle();"
+                [ngClass]="{'itmSelect' : aktuellesProjekt===p}">
                 {{p.titel}}
               </mat-list-option>
               <mat-divider></mat-divider>
-              <!-- <mat-list-option>
-                <div>
-                  <button mat-mini-fab color="primary">
-                    <mat-icon>add</mat-icon>
-                  </button>
-                </div>
-                  [ngStyle] ="{'top.px': (projekt_daten_div.top) }"
-                  [ngStyle] ="{'left.px': projekt_daten_div.left + (projekt_daten_div.clientWidth / 2) + 200 }"
-                 [ngStyle] ="{'top.px': (projekt_daten_div.top) }"
-              </mat-list-option> -->
             </mat-selection-list>
           </mat-drawer>
           <mat-drawer-content [ngStyle]="contentDrawerContentStyles">
+            <!-- <mat-card class="content rand-aussen"> -->
             <div #projekt_daten_div class="content rand-innen">
-              <mat-accordion #pa [multi]="true">
+              <mat-card-title>Projekt-Details</mat-card-title>
+              <mat-accordion [multi]="true">
                 <projekt-daten #projekt_daten [aktuellesProjekt]="aktuellesProjekt"
                   (click)="anlage_daten.editAnlage = false">
-                 </projekt-daten>
-                <!-- <button mat-fab color="primary" style="position: absolute; z-index: 10; left:45%;"
-                  >
-                    <mat-icon>add</mat-icon>
-                  </button> -->
+                </projekt-daten>
                 <projekt-anlage-daten #anlage_daten [aktuellesProjekt]="aktuellesProjekt"
-                  (click)="projekt_daten.editProjekt = false">
+                  (click)="projekt_daten.saveChanges()">
                 </projekt-anlage-daten>
               </mat-accordion>
             </div>

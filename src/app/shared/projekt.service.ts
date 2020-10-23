@@ -17,7 +17,24 @@ export class ProjektService {
   public newProjekt(): Projekt {
     let p: Projekt = {
       id: this.projekte.length + 1,
-    };
+      titel: null,
+      standort: {
+        strasse: null,
+        strasseNr: null,
+        plz: null,
+        postOrt: null,
+        gemeinde: null,
+      },
+      inbetriebnahme: { tag: null, monat: null, jahr: null },
+      parzellenNr: null,
+      versicherungsNr: null,
+      gebaeudeArt: null,
+      vnb: null,
+      art: null,
+      statusText: null,
+      status: null,
+      anlagen: null,
+     };
     this.projekte.push(p);
     return p;
   }

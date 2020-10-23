@@ -9,8 +9,8 @@ export interface Standort{
   strasse2?:string;
   strasseNr?:number;
   strasseNrZusatz?:string;
-  plz:number;
-  postOrt:string;
+  plz?:number;
+  postOrt?:string;
   gemeinde?:string;
 }
 export interface Adresse{

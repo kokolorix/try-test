@@ -5,6 +5,7 @@ import {ProjektService} from 'src/app/shared/projekt.service'
 import { ResizeEvent } from 'angular-resizable-element';
 import {MatDialog} from '@angular/material/dialog';
 import { StandortDialogComponent } from 'src/app/shared/standort-dialog/standort-dialog.component';
+import { ProjektDatenComponent } from './projekt-daten/projekt-daten.component';
 
 @Component({
   selector: 'app-projekt4',
@@ -14,7 +15,7 @@ import { StandortDialogComponent } from 'src/app/shared/standort-dialog/standort
 export class Projekt4Component implements OnInit {
 
   allExpanded: boolean = true;
-  navOpen: boolean = true;
+  navOpen: boolean = false;
 
 	contentDrawerStyles: object = {};
 	contentDrawerContentStyles: object = {};
@@ -46,8 +47,9 @@ export class Projekt4Component implements OnInit {
     });
   }
 
-  alert(msg : any){
-    window.alert(msg);
+  selectProjekt(p:Projekt, projekt_daten:ProjektDatenComponent):void{
+    projekt_daten.saveChanges();
+    this.aktuellesProjekt = p;
   }
 
   newProjekt(){

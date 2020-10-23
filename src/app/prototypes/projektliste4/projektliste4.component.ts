@@ -63,10 +63,8 @@ export class Projektliste4Component implements OnInit {
   }
 
   newProjekt() : void {
-    let p : Projekt = {
-      id: this.dataSource.data.length + 1,
-    };
-    this.dataSource.data.push(p);
+    let p : Projekt = this.projektService.newProjekt();
+    this.projektIds.push(p.id);
     this.openProjektDetail(p);
   }
 
