@@ -1,10 +1,19 @@
 <mat-expansion-panel #projekt_daten [expanded]="true" class="mat-elevation-z8">
-    <mat-expansion-panel-header>
-        <span>Projekt-Daten</span>
-        <!-- <span class="menu-spacer"></span> -->
+ <mat-expansion-panel-header>
+   <!--
+     style="display: flex; align-items: center;"
+     style="justify-self: center;"
+    -->
+   <div >
+         <span>Projekt-Daten</span>
+        <!-- <button mat-fab color="primary"
+        style="position: absolute; left:44%; top: 0.5rem; z-index: 100;"
+        >
+         <mat-icon>add</mat-icon>
+       </button>       <span class="menu-spacer"></span> -->
         <span *ngIf="!projekt_daten.expanded" style="margin-left: 0.5rem;">{{aktuellesProjekt.standort.strasse}}
       {{aktuellesProjekt.standort.plz}} {{aktuellesProjekt.standort.postOrt}}</span>
-    </mat-expansion-panel-header>
+    </div></mat-expansion-panel-header>
     <div *ngIf="!editProjekt">
         <p>
             <mat-form-field appearance="outline" style="width: 18rem; height: fit-content;">

@@ -46,6 +46,15 @@ export class Projekt4Component implements OnInit {
     });
   }
 
+  alert(msg : any){
+    window.alert(msg);
+  }
+
+  newProjekt(){
+    this.aktuellesProjekt = this.projektService.newProjekt();
+    // this.projekt-daten
+  }
+
   onResizseContentDrawer(event: ResizeEvent): void {
     this.contentDrawerStyles = {
       width: `${event.rectangle.width}px`

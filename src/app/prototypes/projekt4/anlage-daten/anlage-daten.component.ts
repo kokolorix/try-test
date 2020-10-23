@@ -20,4 +20,9 @@ export class AnlageDatenComponent implements OnInit {
   openAnlageDetail(a:Anlage):void{
 
   }
+
+  alert(msg : any){
+    window.alert(msg);
+  }
+
 }

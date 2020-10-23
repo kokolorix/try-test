@@ -39,15 +39,15 @@ export interface Anlage{
 }
 export interface Projekt{
   id:number;
-  titel:string;
-  standort:Standort;
-  inbetriebnahme:Datum;
-  parzellenNr:number;
-  versicherungsNr:number;
-  gebaeudeArt:string;
-  vnb:string;
-  art:string;
+  titel?:string;
+  standort?:Standort;
+  inbetriebnahme?:Datum;
+  parzellenNr?:number;
+  versicherungsNr?:number;
+  gebaeudeArt?:string;
+  vnb?:string;
+  art?:string;
   anlagen?:Anlage[];
-  statusText:string;
-  status:Status[];
+  statusText?:string;
+  status?:Status[];
 }

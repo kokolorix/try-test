@@ -62,11 +62,19 @@ export class Projektliste4Component implements OnInit {
     }
   }
 
-  openProjektDetail(row: Projekt): void {
-    let url:string = `/projekt4/${row.id}`;
-    if (this.filter) 
+  newProjekt() : void {
+    let p : Projekt = {
+      id: this.dataSource.data.length + 1,
+    };
+    this.dataSource.data.push(p);
+    this.openProjektDetail(p);
+  }
+
+  openProjektDetail(p: Projekt): void {
+    let url:string = `/projekt4/${p.id}`;
+    if (this.filter)
       url += `/${this.filter}/${this.projektIds}`;
-    
+
       this.router.navigateByUrl(url).then(nav => {
         console.log(nav); // true if navigation is successful
       }, err => {

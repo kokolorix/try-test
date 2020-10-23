@@ -1,5 +1,20 @@
 <mat-expansion-panel #anlage_daten [expanded]="true" class="mat-elevation-z8" style="margin-top: 1rem;">
-  <mat-expansion-panel-header>Anlagen</mat-expansion-panel-header>
+  <mat-expansion-panel-header>
+    <div #anlage_header_div>
+    <span>Anlagen</span>
+    <!-- <button mat-fab color="primary"
+    style="position: absolute; left:44%; z-index: 100;"
+    (click)="alert(anlage_header_div.getBoundingClientRect().top)"
+    [ngStyle] ="{'top.px': anlage_header_div.getBoundingClientRect().top }"
+    >
+     <mat-icon>add</mat-icon>
+   </button> -->
+   <!-- <span class="menu-spacer"></span> -->
+   <!--
+
+    -->
+  </div>
+</mat-expansion-panel-header>
   <mat-selection-list *ngIf="false" [multiple]=" false"
     style="padding-top: 0; padding-bottom: 0; min-width:12rem ; max-width: 16rem;">
     <mat-list-option *ngFor="let a of aktuellesProjekt.anlagen">
