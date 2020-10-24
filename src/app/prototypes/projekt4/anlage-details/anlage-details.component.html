@@ -1,0 +1,39 @@
+﻿<div>
+    <p>
+        <mat-form-field appearance="outline" style="width: 18rem;">
+            <mat-label>Gebäudeteil</mat-label>
+            <input matInput type="text" [(ngModel)]="tempAnlage.gebaeudeteil" />
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field appearance="outline" style="width: 18rem;">
+            <mat-label>Nutzung</mat-label>
+            <input matInput type="text" [(ngModel)]="tempAnlage.gebaeudenutzung" />
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field appearance="outline" style="width: 9rem; margin-right: 0.5rem;">
+            <mat-label>ZählerNr. 1</mat-label>
+            <input matInput type="text" [(ngModel)]="tempAnlage.zaehlerNr" />
+        </mat-form-field>
+        <mat-form-field appearance="outline" style="width: 9rem;">
+            <mat-label>ZählerNr. 2</mat-label>
+            <input matInput type="text" [(ngModel)]="tempAnlage.zaehlerNr2" />
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field appearance="outline" style="width: 9rem; margin-right: 0.5rem;">
+            <mat-label>RapportNr.</mat-label>
+            <input matInput type="text" [(ngModel)]="tempAnlage.vnbMeldungsNr" />
+        </mat-form-field>
+    </p>
+    <mat-toolbar>
+        <span class="menu-spacer"></span>
+        <button mat-icon-button (click)="cancelChanges()">
+            <mat-icon>cancel</mat-icon>
+        </button>
+        <button mat-icon-button (click)="saveChanges()">
+            <mat-icon>save</mat-icon>
+        </button>
+    </mat-toolbar>
+</div>

@@ -1,49 +1,40 @@
 ﻿<div #das_ganze class="alles">
-  <div #projekt_div class="theme rand-innen">
-    <mat-card class="mat-elevation-z8">
-      <mat-toolbar>
-        <button mat-mini-fab color="secundary" routerLink="/projektliste4//{{filter}}" style="margin-right: 0.5rem;">
-          <mat-icon>arrow_back</mat-icon>
+    <div #projekt_div class="theme rand-innen">
+        <mat-card class="mat-elevation-z8">
+            <mat-toolbar>
+                <button mat-mini-fab color="secundary" routerLink="/projektliste4//{{filter}}" style="margin-right: 0.5rem;">
+          <mat-icon>list_alt</mat-icon>
         </button>
-        <button mat-mini-fab color="secundary" (click)="sidenav.toggle()" style="margin-right: 0.5rem;">
+                <button mat-mini-fab color="secundary" (click)="sidenav.toggle()" style="margin-right: 0.5rem;">
           <mat-icon>menu</mat-icon>
         </button>
-      </mat-toolbar>
-      <mat-card-content>
-        <mat-drawer-container style="height: 100%;">
-          <mat-drawer mwlResizable #sidenav role="directory" mode="side" position="start"
-            [opened]="navOpen && das_ganze.offsetWidth > 1000" fixedTopGap="0" fixedBottomGap="0"
-            style="box-sizing: border-box; overflow-y: unset;" [enableGhostResize]="false"
-            [resizeEdges]="{ bottom: false, right: true, top: false, left: false }" [ngStyle]="contentDrawerStyles"
-            (resizing)="onResizseContentDrawer($event)" (resizeEnd)="onResizseContentDrawer($event)">
-            <mat-selection-list [multiple]="false"
-              style="padding-top: 0; padding-bottom: 0; min-width: 264px; overflow-y: unset;"
-              style="padding-top: 0; padding-bottom: 0; min-width: 264px; overflow-y: unset;">
-              <mat-list-option *ngFor="let p of gefilterteProjekte" style="overflow-y: unset;"
-                (click)="selectProjekt(p, projekt_daten); sidenav.toggle();"
-                [ngClass]="{'itmSelect' : aktuellesProjekt===p}">
-                {{p.titel}}
-              </mat-list-option>
-              <mat-divider></mat-divider>
-            </mat-selection-list>
-          </mat-drawer>
-          <mat-drawer-content [ngStyle]="contentDrawerContentStyles">
-            <!-- <mat-card class="content rand-aussen"> -->
-            <div #projekt_daten_div class="content rand-innen">
-              <mat-card-title>Projekt-Details</mat-card-title>
-              <mat-accordion [multi]="true">
-                <projekt-daten #projekt_daten [aktuellesProjekt]="aktuellesProjekt"
-                  (click)="anlage_daten.editAnlage = false">
-                </projekt-daten>
-                <projekt-anlage-daten #anlage_daten [aktuellesProjekt]="aktuellesProjekt"
-                  (click)="projekt_daten.saveChanges()">
-                </projekt-anlage-daten>
-              </mat-accordion>
-            </div>
-          </mat-drawer-content>
+            </mat-toolbar>
+            <mat-card-content>
+                <mat-drawer-container style="height: 100%;">
+                    <mat-drawer mwlResizable #sidenav role="directory" mode="side" position="start" [opened]="navOpen && das_ganze.offsetWidth > 1000" fixedTopGap="0" fixedBottomGap="0" style="box-sizing: border-box; overflow-y: unset;" [enableGhostResize]="false" [resizeEdges]="{ bottom: false, right: true, top: false, left: false }"
+                        [ngStyle]="contentDrawerStyles" (resizing)="onResizseContentDrawer($event)" (resizeEnd)="onResizseContentDrawer($event)">
+                        <mat-selection-list [multiple]="false" style="padding-top: 0; padding-bottom: 0; min-width: 264px; overflow-y: unset;" style="padding-top: 0; padding-bottom: 0; min-width: 264px; overflow-y: unset;">
+                            <mat-list-option *ngFor="let p of gefilterteProjekte" style="overflow-y: unset;" (click)="selectProjekt(p, projekt_daten); sidenav.toggle();" [ngClass]="{'itmSelect' : aktuellesProjekt===p}">
+                                {{p.titel}}
+                            </mat-list-option>
+                            <mat-divider></mat-divider>
+                        </mat-selection-list>
+                    </mat-drawer>
+                    <mat-drawer-content [ngStyle]="contentDrawerContentStyles">
+                        <!-- <mat-card class="content rand-aussen"> -->
+                        <div class="content rand-innen">
+                            <mat-card-title>Projekt</mat-card-title>
+                            <mat-accordion [multi]="true">
+                                <projekt-daten #projekt_daten [aktuellesProjekt]="aktuellesProjekt" (click)="anlage_daten.editAnlage = false">
+                                </projekt-daten>
+                                <projekt-anlage-daten #anlage_daten [aktuellesProjekt]="aktuellesProjekt" (click)="projekt_daten.saveChanges()">
+                                </projekt-anlage-daten>
+                            </mat-accordion>
+                        </div>
+                    </mat-drawer-content>
 
-        </mat-drawer-container>
-      </mat-card-content>
-    </mat-card>
-  </div>
+                </mat-drawer-container>
+            </mat-card-content>
+        </mat-card>
+    </div>
 </div>

@@ -1,0 +1,93 @@
+﻿<table mat-table [dataSource]="aktuellesProjekt.anlagen">
+
+    <ng-container matColumnDef="edit">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let a">
+            <div style="display: flex;">
+                <button mat-icon-button class="editButton" (click)="startChanging(a)">
+                    <mat-icon>arrow_forward</mat-icon>
+                </button>
+            </div>
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="anlage">
+        <th mat-header-cell *matHeaderCellDef class="infoColumn"><span style="margin-left: 1rem;">Anlage</span> </th>
+        <td mat-cell *matCellDef="let a" class="infoColumn">
+            <div style="display: flex;">
+                <div style="margin-left: 1rem;">{{a.gebaeudeteil + ", " + a.gebaeudenutzung}}</div>
+            </div>
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="zaehler">
+        <th mat-header-cell *matHeaderCellDef class="infoColumn"><span style="margin-left: 1rem;">Zähler Nr.</span>
+        </th>
+        <td mat-cell *matCellDef="let a" class="infoColumn">
+            <div style="display: flex;">
+                <div style="margin-left: 1rem;">{{"Zähler1: " + a.zaehlerNr + ", Zähler2: " + a.zaehlerNr2}}</div>
+            </div>
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="vnbnr">
+        <th mat-header-cell *matHeaderCellDef class="infoColumn"><span style="margin-left: 1rem;">Rapport Nr.</span>
+        </th>
+        <td mat-cell *matCellDef="let a" class="infoColumn">
+            <div style="display: flex;">
+                <div style="margin-left: 1rem;">{{a.vnbMeldungsNr}}</div>
+            </div>
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="tag">
+        <th mat-header-cell *matHeaderCellDef class="formHeader"><span>TAG</span></th>
+        <td mat-cell *matCellDef="let a" class="formHeader">
+            <button mat-icon-button class="hasButton" *ngIf="hasLeistung(a, 'tag')" routerLink="/formular4">
+                <mat-icon>description</mat-icon>
+            </button>
+            <button mat-icon-button class="addButton" *ngIf="!hasLeistung(a, 'tag')">
+                <mat-icon>note_add</mat-icon>
+            </button>
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="ia">
+        <th mat-header-cell *matHeaderCellDef class="formHeader"><span>IA</span></th>
+        <td mat-cell *matCellDef="let a" class="formHeader">
+            <button mat-icon-button class="hasButton" *ngIf="hasLeistung(a, 'ia')" routerLink="/formular4">
+                <mat-icon>description</mat-icon>
+            </button>
+            <button mat-icon-button class="addButton" *ngIf="!hasLeistung(a, 'ia')">
+                <mat-icon>note_add</mat-icon>
+            </button>
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="ab">
+        <th mat-header-cell *matHeaderCellDef class="formHeader"><span>AB</span></th>
+        <td mat-cell *matCellDef="let a" class="formHeader">
+            <button mat-icon-button class="hasButton" *ngIf="hasLeistung(a, 'ab')" routerLink="/formular4">
+                <mat-icon>description</mat-icon>
+            </button>
+            <button mat-icon-button class="addButton" *ngIf="!hasLeistung(a, 'ab')">
+                <mat-icon>note_add</mat-icon>
+            </button>
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="sina">
+        <th mat-header-cell *matHeaderCellDef class="formHeader"><span>SiNa</span></th>
+        <td mat-cell *matCellDef="let a" class="formHeader">
+            <button mat-icon-button class="hasButton" *ngIf="hasLeistung(a, 'sina')" routerLink="/formular4">
+                <mat-icon>description</mat-icon>
+            </button>
+            <button mat-icon-button class="addButton" *ngIf="!hasLeistung(a, 'sina')">
+                <mat-icon>note_add</mat-icon>
+            </button>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="anlagen-liste-row"></tr>
+</table>

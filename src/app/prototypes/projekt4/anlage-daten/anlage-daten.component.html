@@ -3,30 +3,26 @@
         <div #anlage_header_div>
             <span>Anlagen</span>
         </div>
-        <div style="position: absolute; right: 8%; top: 15%;">
+        <div style="position: absolute; right: 3rem; top: 0.2rem;">
             <!-- <button mat-icon-button *ngIf="!onEditingAnlage"
         (click)="startChanging(this); $event.stopPropagation()">
         <mat-icon>edit</mat-icon>
     </button> -->
-            <button mat-icon-button><mat-icon>add_circle</mat-icon></button>
+            <button mat-mini-fab color="secondary" style="margin-right: 0.3rem;">
+        <mat-icon>add</mat-icon>
+    </button>
         </div>
     </mat-expansion-panel-header>
 
-    <anlage-grid #anlage_grid
-     [aktuellesProjekt]="aktuellesProjekt"
-     [anlage_daten]="this"
-     *ngIf="!onEditingAnlage">
+    <anlage-grid #anlage_grid [aktuellesProjekt]="aktuellesProjekt" [anlage_daten]="this" *ngIf="!onEditingAnlage">
     </anlage-grid>
 
-    <anlage-details #anlage_details 
-     [aktuellesProjekt]="aktuellesProjekt"
-     [anlage_daten]="this"
-    *ngIf="onEditingAnlage">
+    <anlage-details #anlage_details [aktuellesProjekt]="aktuellesProjekt" [anlage_daten]="this" *ngIf="onEditingAnlage">
     </anlage-details>
     <!-- <projekt-daten #projekt_daten  -->
 
 
-<!-- 
+    <!-- 
     <mat-selection-list *ngIf="false" [multiple]=" false" style="padding-top: 0; padding-bottom: 0; min-width:12rem ; max-width: 16rem;">
         <mat-list-option *ngFor="let a of aktuellesProjekt.anlagen">
             <div>{{a.gebaeudeteil}}, {{a.gebaeudenutzung}}</div>

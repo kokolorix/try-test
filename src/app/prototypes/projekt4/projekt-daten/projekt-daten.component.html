@@ -6,11 +6,13 @@
             <span *ngIf="!projekt_daten.expanded" style="margin-left: 0.5rem;">{{aktuellesProjekt.standort.strasse}} {{aktuellesProjekt.standort.strasseNr}}{{aktuellesProjekt.standort.strasseNrZusatz}} 
                 {{aktuellesProjekt.standort.plz}} {{aktuellesProjekt.standort.postOrt}}</span>
 
-            <div style="position: absolute; right: 8%; top: 15%;">
-                <button mat-icon-button *ngIf="!onEditingProjekt" (click)="startChanging(this); $event.stopPropagation()">
+            <div style="position: absolute; right: 3rem; top: 0.2rem;">
+                <button mat-mini-fab color="secondary" style="margin-right: 0.3rem;" *ngIf="!onEditingProjekt" (click)="startChanging(this); $event.stopPropagation()">
                     <mat-icon>edit</mat-icon>
                 </button>
-                <button mat-icon-button><mat-icon>add_circle</mat-icon></button>
+                <button mat-mini-fab color="secondary" style="margin-right: 0.3rem;">
+                    <mat-icon>add</mat-icon>
+                </button>
             </div>
         </div>
     </mat-expansion-panel-header>
@@ -107,11 +109,11 @@
         </p>
         <mat-toolbar>
             <span class="menu-spacer"></span>
-            <button mat-icon-button (click)="saveChanges()">
-                <mat-icon>cancel</mat-icon>
+            <button mat-mini-fab color="secondary" style="margin-right: 1rem;" (click)="saveChanges()">
+                <mat-icon>close</mat-icon>
             </button>
-            <button mat-icon-button (click)="cancelChanges()">
-                <mat-icon>check_circle</mat-icon>
+            <button mat-mini-fab color="secondary" style="margin-right: 1rem;" (click)="cancelChanges()">
+                <mat-icon>check</mat-icon>
             </button>
         </mat-toolbar>
     </div>
