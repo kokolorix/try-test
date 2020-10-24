@@ -1,6 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+﻿import { Component, OnInit, Input } from '@angular/core';
 import { Anlage, Projekt } from 'src/app/shared/projekt.interface';
-
+import { AnlageGridComponent} from 'src/app/prototypes/projekt4/anlage-grid/anlage-grid.component'
+import { AnlageDetailsComponent} from 'src/app/prototypes/projekt4/anlage-details/anlage-details.component'
 @Component({
   selector: 'projekt-anlage-daten',
   templateUrl: './anlage-daten.component.html',
@@ -12,27 +13,8 @@ export class AnlageDatenComponent implements OnInit {
   public onEditingAnlage: boolean = false;
   public aktuelleAnlage: Anlage;
 
-  public displayedColumns: string[] = ['edit', 'anlage', 'zaehler', 'vnbnr', 'tag', 'ia', 'ab', 'sina'];
-
   constructor() { }
 
   ngOnInit(): void {
   }
-
-  hasLeistung(a:Anlage, typ:string):boolean{
-    return a.leistungen.filter(x => x.typ.toLocaleLowerCase() === typ.toLocaleLowerCase()).length !== 0;
-  }
-  openAnlageDetail(a:Anlage):void{
-
-  }
-
-  startChanging(e: any): void {
-  }
-
-  saveChanges() {
-  }
-
-  cancelChanges(){
-  }
-
 }

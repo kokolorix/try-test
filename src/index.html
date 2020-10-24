@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="de">
+
 <head>
   <meta charset="utf-8">
   <title>NextGen WebApp Prototyp</title>
@@ -8,8 +9,21 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script>
+    var useTouch = false;
+    function einstieg() {
+      try {
+        document.createEvent("TouchEvent");
+        useTouch = true;
+      } catch (e) {
+        useTouch = false;
+      }
+    }
+  </script>
 </head>
-<body class="mat-typography" onload="myFunction()">
+
+<body class="mat-typography" onload="einstieg()">
   <app-root></app-root>
 </body>
+
 </html>

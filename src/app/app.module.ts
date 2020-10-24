@@ -57,6 +57,8 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { ProjektDatenComponent } from './prototypes/projekt4/projekt-daten/projekt-daten.component';
 import { AnlageDatenComponent } from './prototypes/projekt4/anlage-daten/anlage-daten.component';
+import { AnlageGridComponent } from './prototypes/projekt4/anlage-grid/anlage-grid.component';
+import { AnlageDetailsComponent } from './prototypes/projekt4/anlage-details/anlage-details.component';
 
 
 @NgModule({
@@ -76,7 +78,9 @@ import { AnlageDatenComponent } from './prototypes/projekt4/anlage-daten/anlage-
     HeaderComponent,
     FooterComponent,
     ProjektDatenComponent,
-    AnlageDatenComponent
+    AnlageDatenComponent,
+    AnlageGridComponent,
+    AnlageDetailsComponent
   ],
   imports: [
     BrowserModule,
