@@ -16,6 +16,8 @@ export class ProjektDatenComponent implements OnInit {
   public tempProjekt: Projekt = null;
   public onEditingProjekt: boolean = false;
   public useTouch: boolean = false;
+  public mo_gem_par: boolean = false;
+  public aktuellerInput: string = null;
 
   constructor() {
     this.useTouch = is_touch_device();
@@ -25,22 +27,29 @@ export class ProjektDatenComponent implements OnInit {
   }
 
   startChanging(e: any): void {
+    this.mo_gem_par = false;
     this.onEditingProjekt = true;
     this.tempProjekt = this.aktuellesProjekt;
+    setTimeout(() => {
+      let ai: HTMLElement = document.getElementById(this.aktuellerInput);
+    if(ai){
+      ai.focus();
+    }
+  }, 200);
     // this.dialog.open(StandortDialogComponent);
-  }
+}
 
-  saveChanges() {
+ saveChanges() {
     // p.standort.strasse = '';
-    if(this.tempProjekt){
+    if (this.tempProjekt) {
       this.aktuellesProjekt = this.tempProjekt;
       this.tempProjekt = null;
     }
     this.onEditingProjekt = false;
   }
-  cancelChanges(){
+  cancelChanges() {
     this.tempProjekt = null;
-    this.onEditingProjekt = false;    
+    this.onEditingProjekt = false;
   }
 
 }

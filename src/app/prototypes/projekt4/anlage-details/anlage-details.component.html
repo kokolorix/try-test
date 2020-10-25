@@ -29,11 +29,11 @@
     </p>
     <mat-toolbar>
         <span class="menu-spacer"></span>
-        <button mat-icon-button (click)="cancelChanges()">
-            <mat-icon>cancel</mat-icon>
+        <button mat-mini-fab color="secondary" style="margin-right: 1rem;" (click)="saveChanges()">
+            <mat-icon>close</mat-icon>
         </button>
-        <button mat-icon-button (click)="saveChanges()">
-            <mat-icon>save</mat-icon>
+        <button mat-mini-fab color="secondary" style="margin-right: 1rem;" (click)="cancelChanges()">
+            <mat-icon>check</mat-icon>
         </button>
     </mat-toolbar>
 </div>

@@ -17,50 +17,51 @@
         </div>
     </mat-expansion-panel-header>
     <div *ngIf="!onEditingProjekt">
-        <p>
+        <div (mouseenter)="aktuellerInput='input_standort'">
             <mat-form-field appearance="outline" style="width: 18rem; height: fit-content;">
                 <mat-label>Standort</mat-label>
-                <textarea disabled="true" matInput value="{{aktuellesProjekt.standort.strasse}} {{aktuellesProjekt.standort.strasseNr}}{{aktuellesProjekt.standort.strasseNrZusatz}}
+                <textarea readonly="true" matInput value="{{aktuellesProjekt.standort.strasse}} {{aktuellesProjekt.standort.strasseNr}}{{aktuellesProjekt.standort.strasseNrZusatz}}
 {{aktuellesProjekt.standort.plz}} {{aktuellesProjekt.standort.postOrt}}"></textarea>
             </mat-form-field>
             <button mat-icon-button class="editButton" (click)="startChanging(this)">
                 <mat-icon>edit</mat-icon>
             </button>
-        </p>
-        <p>
+        </div>
+        <div (mouseenter)="aktuellerInput='input_gemeinde'">
             <mat-form-field appearance="outline" style="width: 18rem; ">
                 <mat-label>Gemeinde</mat-label>
-                <input disabled="true" matInput type="text" value="{{aktuellesProjekt.standort.gemeinde}}" />
+                <mat-placeholder>z</mat-placeholder>
+                <input readonly="true" matNativeControl type="text" value="{{aktuellesProjekt.standort.gemeinde}}" (click)="aktuellerInput='input_gemeinde'; startChanging(this);" />
             </mat-form-field>
             <mat-form-field appearance="outline" style="width: 6rem; margin-left: 0.5rem; ">
                 <mat-label>Parzelle</mat-label>
-                <input disabled="true" matInput type="text" value="{{aktuellesProjekt.parzellenNr}}" />
+                <input readonly="true" matInput type="text" value="{{aktuellesProjekt.parzellenNr}}" (click)="aktuellerInput='input_parzelle'; startChanging(this);" />
             </mat-form-field>
-            <button mat-icon-button class="editButton" (click)="startChanging(this)">
+            <button mat-icon-button (click)="startChanging(this)" *ngIf="aktuellerInput==='input_gemeinde'">
                 <mat-icon>edit</mat-icon>
             </button>
-        </p>
-        <p>
+        </div>
+        <div (mouseenter)="aktuellerInput='input_versicherungsNr'">
             <mat-form-field appearance="outline" style="width: 18rem; ">
                 <mat-label>Versicherungs-Nr.</mat-label>
-                <input disabled="true" matInput type="text" value="{{aktuellesProjekt.versicherungsNr}}" />
+                <input readonly="true" matInput type="text" value="{{aktuellesProjekt.versicherungsNr}}" />
             </mat-form-field>
             <button mat-icon-button class="editButton" (click)="startChanging(this)">
                 <mat-icon>edit</mat-icon>
             </button>
-        </p>
-        <p>
+        </div>
+        <div (mouseenter)="aktuellerInput='input_genaudeArt'">
             <mat-form-field appearance="outline" style="width: 18rem; ">
                 <mat-label>Gebäudeart</mat-label>
-                <input disabled="true" matInput type="text" value="{{aktuellesProjekt.gebaeudeArt}}" />
+                <input readonly="true" matInput type="text" value="{{aktuellesProjekt.gebaeudeArt}}" />
             </mat-form-field>
             <button mat-icon-button class="editButton" (click)="startChanging(this)">
                 <mat-icon>edit</mat-icon>
             </button>
-        </p>
+        </div>
     </div>
     <div *ngIf="onEditingProjekt">
-        <p>
+        <div>
             <mat-form-field appearance="outline" style="width: 18rem; ">
                 <mat-label>Strasse</mat-label>
                 <input matInput type="text" [(ngModel)]="tempProjekt.standort.strasse" />
@@ -73,8 +74,8 @@
                 <mat-label>Nr-Zusatz</mat-label>
                 <input matInput type="text" [(ngModel)]="tempProjekt.standort.strasseNrZusatz" />
             </mat-form-field>
-        </p>
-        <p>
+        </div>
+        <div>
             <mat-form-field appearance="outline" style="width: 6rem; margin-right: 0.5rem; ">
                 <mat-label>PLZ</mat-label>
                 <input matInput type="text" [(ngModel)]="tempProjekt.standort.plz" />
@@ -83,30 +84,30 @@
                 <mat-label>Ort</mat-label>
                 <input matInput type="text" [(ngModel)]="tempProjekt.standort.postOrt" />
             </mat-form-field>
-        </p>
-        <p>
+        </div>
+        <div>
             <mat-form-field appearance="outline" style="width: 18rem; ">
                 <mat-label>Gemeinde</mat-label>
-                <input matInput type="text" [(ngModel)]="tempProjekt.standort.gemeinde" />
+                <input id="input_gemeinde" matInput type="text" [(ngModel)]="tempProjekt.standort.gemeinde" />
             </mat-form-field>
             <mat-form-field appearance="outline" style="width: 6rem; margin-left: 0.5rem; ">
                 <mat-label>Parzelle</mat-label>
-                <input matInput type="text" [(ngModel)]="tempProjekt.parzellenNr" />
+                <input id="input_parzelle" matInput type="text" [(ngModel)]="tempProjekt.parzellenNr" />
             </mat-form-field>
-        </p>
-        <p>
+        </div>
+        <div>
             <mat-form-field appearance="outline" style="width: 18rem; ">
                 <mat-label>Versicherungs-Nr.</mat-label>
                 <input matInput type="text" [(ngModel)]="tempProjekt.versicherungsNr" />
             </mat-form-field>
-        </p>
-        <p>
+        </div>
+        <div>
             <mat-form-field appearance="outline" style="width: 18rem; ">
                 <mat-label>Gebäudeart</mat-label>
                 <input matInput type="text" [(ngModel)]="tempProjekt.gebaeudeArt" />
                 <!-- <input matInput type="text" value="{{aktuellesProjekt.gebaeudeArt}}" /> -->
             </mat-form-field>
-        </p>
+        </div>
         <mat-toolbar>
             <span class="menu-spacer"></span>
             <button mat-mini-fab color="secondary" style="margin-right: 1rem;" (click)="saveChanges()">
