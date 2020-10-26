@@ -1,39 +1,22 @@
-﻿<div>
-    <p>
-        <mat-form-field appearance="outline" style="width: 18rem;">
-            <mat-label>Gebäudeteil</mat-label>
-            <input matInput type="text" [(ngModel)]="tempAnlage.gebaeudeteil" />
-        </mat-form-field>
-    </p>
-    <p>
-        <mat-form-field appearance="outline" style="width: 18rem;">
-            <mat-label>Nutzung</mat-label>
-            <input matInput type="text" [(ngModel)]="tempAnlage.gebaeudenutzung" />
-        </mat-form-field>
-    </p>
-    <p>
-        <mat-form-field appearance="outline" style="width: 9rem; margin-right: 0.5rem;">
-            <mat-label>ZählerNr. 1</mat-label>
-            <input matInput type="text" [(ngModel)]="tempAnlage.zaehlerNr" />
-        </mat-form-field>
-        <mat-form-field appearance="outline" style="width: 9rem;">
-            <mat-label>ZählerNr. 2</mat-label>
-            <input matInput type="text" [(ngModel)]="tempAnlage.zaehlerNr2" />
-        </mat-form-field>
-    </p>
-    <p>
-        <mat-form-field appearance="outline" style="width: 9rem; margin-right: 0.5rem;">
-            <mat-label>RapportNr.</mat-label>
-            <input matInput type="text" [(ngModel)]="tempAnlage.vnbMeldungsNr" />
-        </mat-form-field>
-    </p>
-    <mat-toolbar>
-        <span class="menu-spacer"></span>
-        <button mat-mini-fab color="secondary" style="margin-right: 1rem;" (click)="saveChanges()">
-            <mat-icon>close</mat-icon>
-        </button>
-        <button mat-mini-fab color="secondary" style="margin-right: 1rem;" (click)="cancelChanges()">
-            <mat-icon>check</mat-icon>
-        </button>
-    </mat-toolbar>
-</div>
+﻿<mat-expansion-panel [expanded]="true" class="mat-elevation-z8" style="margin-top: 1rem;">
+  <mat-expansion-panel-header>
+      <div>
+          <span>Anlagen</span>
+      </div>
+      <!-- <div style="position: absolute; right: 3rem; top: 0.2rem;">
+           <button mat-icon-button *ngIf="!onEditingAnlage"
+      (click)="startChanging(this); $event.stopPropagation()">
+      <mat-icon>edit</mat-icon>
+  </button>
+           <button mat-mini-fab color="secondary" style="margin-right: 0.3rem;">
+      <mat-icon>add</mat-icon>
+  </button>
+      </div> -->
+  </mat-expansion-panel-header>
+
+  <anlage-grid #anlage_grid [aktuellesProjekt]="aktuellesProjekt" [projekt_daten]="projekt_daten" [anlage_details]="this" *ngIf="!onEditingAnlage">
+  </anlage-grid>
+
+  <anlage-daten #anlage_daten [aktuellesProjekt]="aktuellesProjekt" [anlage_details]="this" *ngIf="onEditingAnlage">
+  </anlage-daten>
+</mat-expansion-panel>

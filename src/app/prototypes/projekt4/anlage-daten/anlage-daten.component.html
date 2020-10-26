@@ -1,104 +1,81 @@
-<mat-expansion-panel [expanded]="true" class="mat-elevation-z8" style="margin-top: 1rem;">
-    <mat-expansion-panel-header>
-        <div #anlage_header_div>
-            <span>Anlagen</span>
-        </div>
-        <div style="position: absolute; right: 3rem; top: 0.2rem;">
-            <!-- <button mat-icon-button *ngIf="!onEditingAnlage"
-        (click)="startChanging(this); $event.stopPropagation()">
-        <mat-icon>edit</mat-icon>
-    </button> -->
-            <button mat-mini-fab color="secondary" style="margin-right: 0.3rem;">
-        <mat-icon>add</mat-icon>
-    </button>
-        </div>
-    </mat-expansion-panel-header>
-
-    <anlage-grid #anlage_grid [aktuellesProjekt]="aktuellesProjekt" [anlage_daten]="this" *ngIf="!onEditingAnlage">
-    </anlage-grid>
-
-    <anlage-details #anlage_details [aktuellesProjekt]="aktuellesProjekt" [anlage_daten]="this" *ngIf="onEditingAnlage">
-    </anlage-details>
-    <!-- <projekt-daten #projekt_daten  -->
-
-
-    <!-- 
-    <mat-selection-list *ngIf="false" [multiple]=" false" style="padding-top: 0; padding-bottom: 0; min-width:12rem ; max-width: 16rem;">
-        <mat-list-option *ngFor="let a of aktuellesProjekt.anlagen">
-            <div>{{a.gebaeudeteil}}, {{a.gebaeudenutzung}}</div>
-        </mat-list-option>
-        <mat-list-option>
-            <div>
-                <button mat-mini-fab color="primary">
-          <mat-icon>add</mat-icon>
-        </button>
-            </div>
-        </mat-list-option>
-    </mat-selection-list>
-    <mat-accordion *ngIf="false" [multi]="false">
-        <mat-expansion-panel *ngFor="let a of aktuellesProjekt.anlagen" [expanded]="false">
-            <mat-expansion-panel-header (click)="aktuelleAnlage = a; onEditingAnlage=false;">
-                <div>
-                    <button mat-icon-button color="primary" (click)="openAnlageDetail(a)">
-          <mat-icon>menu</mat-icon>
-        </button>
-                    <span>{{a.gebaeudeteil}}, {{a.gebaeudenutzung}}</span>
-                    <span style="margin-left: 0.5rem;margin-right: 0.5rem;" class="menu-spacer"></span>
-                    <span>ZählerNr. {{a.zaehlerNr}}, RapportNr. {{a.vnbMeldungsNr}}</span>
-                </div>
-            </mat-expansion-panel-header>
-            <div>
-                <p>
-                    <mat-form-field appearance="outline" style="width: 18rem;">
-                        <mat-label>Gebäudeteil</mat-label>
-                        <input [disabled]="!onEditingAnlage" matInput type="text" value="{{a.gebaeudeteil}}" />
-                    </mat-form-field>
-                    <button *ngIf="!onEditingAnlage" mat-icon-button class="editButton" (click)="onEditingAnlage=true">
-            <mat-icon>edit</mat-icon>
-          </button>
-                </p>
-                <p>
-                    <mat-form-field appearance="outline" style="width: 18rem;">
-                        <mat-label>Nutzung</mat-label>
-                        <input [disabled]="!onEditingAnlage" matInput type="text" value="{{a.gebaeudenutzung}}" />
-                    </mat-form-field>
-                    <button *ngIf="!onEditingAnlage" mat-icon-button class="editButton" (click)="onEditingAnlage=true">
-            <mat-icon>edit</mat-icon>
-          </button>
-                </p>
-                <p>
-                    <mat-form-field appearance="outline" style="width: 9rem; margin-right: 0.5rem;">
-                        <mat-label>ZählerNr. 1</mat-label>
-                        <input [disabled]="!onEditingAnlage" matInput type="text" value="{{a.zaehlerNr}}" />
-                    </mat-form-field>
-                    <mat-form-field appearance="outline" style="width: 9rem;">
-                        <mat-label>ZählerNr. 2</mat-label>
-                        <input [disabled]="!onEditingAnlage" matInput type="text" value="{{a.zaehlerNr2}}" />
-                    </mat-form-field>
-                    <button *ngIf="!onEditingAnlage" mat-icon-button class="editButton" (click)="onEditingAnlage=true">
-            <mat-icon>edit</mat-icon>
-          </button>
-                </p>
-                <p>
-                    <mat-form-field appearance="outline" style="width: 9rem; margin-right: 0.5rem;">
-                        <mat-label>RapportNr.</mat-label>
-                        <input [disabled]="!onEditingAnlage" matInput type="text" value="{{a.vnbMeldungsNr}}" />
-                    </mat-form-field>
-                    <button *ngIf="!onEditingAnlage" mat-icon-button class="editButton" (click)="onEditingAnlage=true">
-            <mat-icon>edit</mat-icon>
-          </button>
-                </p>
-                <mat-toolbar *ngIf="onEditingAnlage">
-                    <span class="menu-spacer"></span>
-                    <button mat-icon-button (click)="onEditingAnlage=false">
-            <mat-icon>save</mat-icon>
-          </button>
-                    <button mat-icon-button (click)="onEditingAnlage=false">
-            <mat-icon>cancel</mat-icon>
-          </button>
-                </mat-toolbar>
-            </div>
-        </mat-expansion-panel>
-    </mat-accordion>
- -->
-</mat-expansion-panel>
+<!-- Anzeigen -->
+<div *ngIf="!onEditingAnlage">
+  <div>
+      <mat-form-field appearance="outline" style="width: 18rem; margin-bottom: -1rem;"
+      (click)="startChanging('input_gebaudeteil');"
+      >
+          <mat-label>Gebäudeteil</mat-label>
+          <input matInput type="text" value="{{tempAnlage.gebaeudeteil}}" />
+      </mat-form-field>
+  </div>
+  <div>
+      <mat-form-field appearance="outline" style="width: 18rem; margin-bottom: -1rem;"
+      (click)="startChanging('input_nutzung');"
+      >
+          <mat-label>Nutzung</mat-label>
+          <input matInput type="text" value="{{tempAnlage.gebaeudenutzung}}" />
+      </mat-form-field>
+  </div>
+  <div>
+      <mat-form-field appearance="outline" style="width: 9rem; margin-right: 0.5rem; margin-bottom: -1rem;"
+      (click)="startChanging('input_zaehler1');"
+      >
+                  <mat-label>ZählerNr. 1</mat-label>
+          <input matInput type="text" value="{{tempAnlage.zaehlerNr}}" />
+      </mat-form-field>
+      <mat-form-field appearance="outline" style="width: 9rem; margin-bottom: -1rem;"
+      (click)="startChanging('input_zaehler2');"
+      >
+          <mat-label>ZählerNr. 2</mat-label>
+          <input matInput type="text" value="{{tempAnlage.zaehlerNr2}}" />
+      </mat-form-field>
+  </div>
+  <div>
+      <mat-form-field appearance="outline" style="width: 9rem; margin-right: 0.5rem; margin-bottom: -1rem;"
+      (click)="startChanging('input_rapportnr');"
+      >
+          <mat-label>RapportNr.</mat-label>
+          <input matInput type="text" value="{{tempAnlage.vnbMeldungsNr}}" />
+      </mat-form-field>
+  </div>
+</div>
+<!-- Editieren -->
+<div *ngIf="onEditingAnlage">
+  <div>
+      <mat-form-field appearance="outline" style="width: 18rem;">
+          <mat-label>Gebäudeteil</mat-label>
+          <input id="input_gebaudeteil" matInput type="text" [(ngModel)]="tempAnlage.gebaeudeteil" />
+      </mat-form-field>
+  </div>
+  <div>
+      <mat-form-field appearance="outline" style="width: 18rem;">
+          <mat-label>Nutzung</mat-label>
+          <input id="input_nutzung" matInput type="text" [(ngModel)]="tempAnlage.gebaeudenutzung" />
+      </mat-form-field>
+  </div>
+  <div>
+      <mat-form-field appearance="outline" style="width: 9rem; margin-right: 0.5rem;">
+          <mat-label>ZählerNr. 1</mat-label>
+          <input id="input_zaehlernr1" matInput type="text" [(ngModel)]="tempAnlage.zaehlerNr" />
+      </mat-form-field>
+      <mat-form-field appearance="outline" style="width: 9rem;">
+          <mat-label>ZählerNr. 2</mat-label>
+          <input id="input_zaehlernr2" matInput type="text" [(ngModel)]="tempAnlage.zaehlerNr2" />
+      </mat-form-field>
+  </div>
+  <div>
+      <mat-form-field appearance="outline" style="width: 9rem; margin-right: 0.5rem;">
+          <mat-label>RapportNr.</mat-label>
+          <input id="input_rapportnr" matInput type="text" [(ngModel)]="tempAnlage.vnbMeldungsNr" />
+      </mat-form-field>
+  </div>
+  <mat-toolbar>
+      <span class="menu-spacer"></span>
+      <button mat-mini-fab color="secondary" style="margin-right: 1rem;" (click)="saveChanges()">
+          <mat-icon>close</mat-icon>
+      </button>
+      <button mat-mini-fab color="secondary" style="margin-right: 1rem;" (click)="cancelChanges()">
+          <mat-icon>check</mat-icon>
+      </button>
+  </mat-toolbar>
+</div>

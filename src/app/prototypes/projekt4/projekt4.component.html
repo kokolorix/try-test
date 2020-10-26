@@ -25,10 +25,10 @@
                         <div class="content rand-innen">
                             <mat-card-title>Projekt</mat-card-title>
                             <mat-accordion [multi]="true">
-                                <projekt-daten #projekt_daten [aktuellesProjekt]="aktuellesProjekt" (click)="anlage_daten.editAnlage = false">
+                                <projekt-daten #projekt_daten [aktuellesProjekt]="aktuellesProjekt" (click)="anlage_details.editAnlage = false">
                                 </projekt-daten>
-                                <projekt-anlage-daten #anlage_daten [aktuellesProjekt]="aktuellesProjekt" (click)="projekt_daten.saveChanges()">
-                                </projekt-anlage-daten>
+                                <anlage-details #anlage_details [aktuellesProjekt]="aktuellesProjekt" [projekt_daten]="projekt_daten" (click)="projekt_daten.saveChanges()">
+                                </anlage-details>
                             </mat-accordion>
                         </div>
                     </mat-drawer-content>

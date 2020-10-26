@@ -6,6 +6,7 @@ import { ResizeEvent } from 'angular-resizable-element';
 import {MatDialog} from '@angular/material/dialog';
 import { StandortDialogComponent } from 'src/app/shared/standort-dialog/standort-dialog.component';
 import { ProjektDatenComponent } from './projekt-daten/projekt-daten.component';
+import { AnlageDetailsComponent} from 'src/app/prototypes/projekt4/anlage-details/anlage-details.component'
 
 @Component({
   selector: 'app-projekt4',

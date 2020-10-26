@@ -29,7 +29,8 @@ export class ProjektDatenComponent implements OnInit {
   startChanging(e: any): void {
     this.mo_gem_par = false;
     this.onEditingProjekt = true;
-    this.tempProjekt = this.aktuellesProjekt;
+
+    this.tempProjekt = JSON.parse(JSON.stringify(this.aktuellesProjekt));// SON.parse(JSON.stringify(...)) -> deep copy
     setTimeout(() => {
       let ai: HTMLElement = document.getElementById(this.aktuellerInput);
     if(ai){
