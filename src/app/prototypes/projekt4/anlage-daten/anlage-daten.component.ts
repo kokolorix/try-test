@@ -2,6 +2,7 @@
 import { Anlage, Projekt } from 'src/app/shared/projekt.interface';
 import { AnlageDetailsComponent } from 'src/app/prototypes/projekt4/anlage-details/anlage-details.component';
 import { AnlageGridComponent } from 'src/app/prototypes/projekt4/anlage-grid/anlage-grid.component';
+import { ProjektDatenComponent } from '../projekt-daten/projekt-daten.component';
 
 @Component({
   selector: 'anlage-daten',
@@ -9,6 +10,7 @@ import { AnlageGridComponent } from 'src/app/prototypes/projekt4/anlage-grid/anl
   styleUrls: ['./anlage-daten.component.scss']
 })
 export class AnlageDatenComponent implements OnInit {
+  @Input() projekt_daten: ProjektDatenComponent;
   @Input() anlage_details: AnlageDetailsComponent;
   @Input() aktuellesProjekt: Projekt;
 
@@ -20,7 +22,8 @@ export class AnlageDatenComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.tempAnlage = this.anlage_details.aktuelleAnlage;
+    this.tempAnlage = JSON.parse(JSON.stringify(this.anlage_details.aktuelleAnlage));// SON.parse(JSON.stringify(...)) -> deep copy
+    this.projekt_daten.anlage_daten = this;
   }
 
   startChanging(input_id:string): void {
@@ -39,7 +42,7 @@ export class AnlageDatenComponent implements OnInit {
   }
 
   saveChanges() {
-    this.anlage_details.aktuelleAnlage = this.tempAnlage;
+    Object.assign(this.anlage_details.aktuelleAnlage, this.tempAnlage);
     this.anlage_details.onEditingAnlage = false;
     this.onEditingAnlage=false;
   }

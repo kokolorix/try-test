@@ -1,41 +1,41 @@
 <!-- Anzeigen -->
 <div *ngIf="!onEditingAnlage">
   <div>
-      <mat-form-field appearance="outline" style="width: 18rem; margin-bottom: -1rem;"
+      <mat-form-field appearance="outline" readonly="true" style="width: 18rem; margin-bottom: -1rem;"
       (click)="startChanging('input_gebaudeteil');"
       >
           <mat-label>Gebäudeteil</mat-label>
-          <input matInput type="text" value="{{tempAnlage.gebaeudeteil}}" />
+          <input matInput type="text" value="{{anlage_details.aktuelleAnlage.gebaeudeteil}}" />
       </mat-form-field>
   </div>
   <div>
-      <mat-form-field appearance="outline" style="width: 18rem; margin-bottom: -1rem;"
+      <mat-form-field appearance="outline" readonly="true" style="width: 18rem; margin-bottom: -1rem;"
       (click)="startChanging('input_nutzung');"
       >
           <mat-label>Nutzung</mat-label>
-          <input matInput type="text" value="{{tempAnlage.gebaeudenutzung}}" />
+          <input matInput type="text" value="{{anlage_details.aktuelleAnlage.gebaeudenutzung}}" />
       </mat-form-field>
   </div>
   <div>
-      <mat-form-field appearance="outline" style="width: 9rem; margin-right: 0.5rem; margin-bottom: -1rem;"
-      (click)="startChanging('input_zaehler1');"
+      <mat-form-field appearance="outline" readonly="true" style="width: 9rem; margin-right: 0.5rem; margin-bottom: -1rem;"
+      (click)="startChanging('input_zaehlernr1');"
       >
                   <mat-label>ZählerNr. 1</mat-label>
-          <input matInput type="text" value="{{tempAnlage.zaehlerNr}}" />
+          <input matInput type="text" value="{{anlage_details.aktuelleAnlage.zaehlerNr}}" />
       </mat-form-field>
-      <mat-form-field appearance="outline" style="width: 9rem; margin-bottom: -1rem;"
-      (click)="startChanging('input_zaehler2');"
+      <mat-form-field appearance="outline" readonly="true" style="width: 9rem; margin-bottom: -1rem;"
+      (click)="startChanging('input_zaehlernr2');"
       >
           <mat-label>ZählerNr. 2</mat-label>
-          <input matInput type="text" value="{{tempAnlage.zaehlerNr2}}" />
+          <input matInput type="text" value="{{anlage_details.aktuelleAnlage.zaehlerNr2}}" />
       </mat-form-field>
   </div>
   <div>
-      <mat-form-field appearance="outline" style="width: 9rem; margin-right: 0.5rem; margin-bottom: -1rem;"
+      <mat-form-field appearance="outline" readonly="true" style="width: 9rem; margin-right: 0.5rem; margin-bottom: -1rem;"
       (click)="startChanging('input_rapportnr');"
       >
           <mat-label>RapportNr.</mat-label>
-          <input matInput type="text" value="{{tempAnlage.vnbMeldungsNr}}" />
+          <input matInput type="text" value="{{anlage_details.aktuelleAnlage.vnbMeldungsNr}}" />
       </mat-form-field>
   </div>
 </div>
@@ -71,10 +71,10 @@
   </div>
   <mat-toolbar>
       <span class="menu-spacer"></span>
-      <button mat-mini-fab color="secondary" style="margin-right: 1rem;" (click)="saveChanges()">
+      <button mat-mini-fab color="secondary" style="margin-right: 1rem;" (click)="cancelChanges()">
           <mat-icon>close</mat-icon>
       </button>
-      <button mat-mini-fab color="secondary" style="margin-right: 1rem;" (click)="cancelChanges()">
+      <button mat-mini-fab color="secondary" style="margin-right: 1rem;" (click)="saveChanges()">
           <mat-icon>check</mat-icon>
       </button>
   </mat-toolbar>

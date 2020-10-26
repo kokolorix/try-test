@@ -17,6 +17,6 @@
   <anlage-grid #anlage_grid [aktuellesProjekt]="aktuellesProjekt" [projekt_daten]="projekt_daten" [anlage_details]="this" *ngIf="!onEditingAnlage">
   </anlage-grid>
 
-  <anlage-daten #anlage_daten [aktuellesProjekt]="aktuellesProjekt" [anlage_details]="this" *ngIf="onEditingAnlage">
+  <anlage-daten #anlage_daten [aktuellesProjekt]="aktuellesProjekt"[projekt_daten]="projekt_daten" [anlage_details]="this" *ngIf="onEditingAnlage">
   </anlage-daten>
 </mat-expansion-panel>

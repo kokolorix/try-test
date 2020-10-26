@@ -22,7 +22,7 @@
             <mat-form-field appearance="outline" style="width: 18rem; margin-bottom: -1rem;">
                 <mat-label>Standort</mat-label>
                 <textarea readonly="true" matInput
-                (click)="aktuellerInput='input_strasse'; startChanging(this);"
+                (click)="startChanging('input_strasse');"
                 value="{{aktuellesProjekt.standort.strasse}} {{aktuellesProjekt.standort.strasseNr}}{{aktuellesProjekt.standort.strasseNrZusatz}}
 {{aktuellesProjekt.standort.plz}} {{aktuellesProjekt.standort.postOrt}}"></textarea>
             </mat-form-field>
@@ -31,12 +31,13 @@
             </button> -->
         </div>
         <div>
-            <mat-form-field appearance="outline" style="width: 18rem; margin-bottom: -1rem;">
+            <mat-form-field appearance="outline" style="width: 18rem; margin-bottom: -1rem;"
+            (click)="startChanging('input_gemeinde');">
                 <mat-label>Gemeinde</mat-label>
-                <mat-placeholder>z</mat-placeholder>
-                <input readonly="true" matNativeControl type="text" value="{{aktuellesProjekt.standort.gemeinde}}" (click)="aktuellerInput='input_gemeinde'; startChanging(this);" />
+                <input readonly="true" matNativeControl type="text" value="{{aktuellesProjekt.standort.gemeinde}}"/>
             </mat-form-field>
-            <mat-form-field appearance="outline" style="width: 6rem; margin-left: 0.5rem;  margin-bottom: -1rem;">
+            <mat-form-field appearance="outline" style="width: 6rem; margin-left: 0.5rem;  margin-bottom: -1rem;"
+            (click)="startChanging('input_parzelle');">
                 <mat-label>Parzelle</mat-label>
                 <input readonly="true" matInput type="text" value="{{aktuellesProjekt.parzellenNr}}" (click)="aktuellerInput='input_parzelle'; startChanging(this);" />
             </mat-form-field>
@@ -46,7 +47,7 @@
         </div>
         <div>
             <mat-form-field appearance="outline" style="width: 18rem; margin-bottom: -1rem;"
-            (click)="aktuellerInput='input_versicherungs_nr'; startChanging(this);">
+            (click)="startChanging('input_versicherungs_nr');">
                 <mat-label>Versicherungs-Nr.</mat-label>
                 <input readonly="true" matInput type="text" value="{{aktuellesProjekt.versicherungsNr}}" />
             </mat-form-field>
@@ -56,7 +57,7 @@
         </div>
         <div>
             <mat-form-field appearance="outline" style="width: 18rem; margin-bottom: -1rem;"
-            (click)="aktuellerInput='input_gebaude_art'; startChanging(this);">
+            (click)="startChanging('input_gebaude_art');">
                 <mat-label>Gebäudeart</mat-label>
                 <input readonly="true" matInput type="text" value="{{aktuellesProjekt.gebaeudeArt}}" />
             </mat-form-field>
